@@ -11,4 +11,4 @@ module.exports = (app) => {
     app.put('/members/:memberId', auth.checkToken, members.update);
 
     app.delete('/members/:memberId', auth.checkToken, members.delete);
-}
+};

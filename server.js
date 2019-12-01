@@ -32,6 +32,7 @@ require('./app/routes/auth.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app);
+require('./app/routes/project.routes.js')(app);
 
 
 app.listen(9001, () => {
