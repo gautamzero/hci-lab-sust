@@ -5,6 +5,7 @@ const projectSchema = mongoose.Schema({
     description: String,
     duration: String,
     coordinators: String,
+    image: String
 }, {
     timestamps : true
     }

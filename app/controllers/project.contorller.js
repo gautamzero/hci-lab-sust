@@ -11,7 +11,8 @@ exports.create = (req, res) => {
         title: req.body.title,
         coordinators: req.body.coordinators,
         description: req.body.description,
-        duration: req.body.duration || ""
+        duration: req.body.duration || "",
+        image: req.file.path || ""
     })
 
     project.save()

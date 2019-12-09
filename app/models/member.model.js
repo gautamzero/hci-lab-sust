@@ -6,7 +6,8 @@ const memberSchema = mongoose.Schema({
     email: String,
     researchInterest: String,
     designation: String,
-    currentWork: String
+    currentWork: String,
+    image: String
 }, {
     timestamps: true
 });

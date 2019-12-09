@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const multer  = require('multer');
 
 const app = express();
+
+app.use('/uploads', express.static('uploads') );
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -31,8 +34,8 @@ app.get('/', (req, res) => {
 require('./app/routes/auth.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
 require('./app/routes/user.routes.js')(app);
-require('./app/routes/member.routes.js')(app);
-require('./app/routes/project.routes.js')(app);
+require('./app/routes/member.routes.js')(app, multer);
+require('./app/routes/project.routes.js')(app, multer);
 
 
 app.listen(9001, () => {

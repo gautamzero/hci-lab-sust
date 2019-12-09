@@ -13,7 +13,8 @@ exports.create = (req, res) => {
         email: req.body.email,
         researchInterest: req.body.researchInterest || "",
         designation: req.body.designation || "",
-        currentWork: req.body.currentWork || ""
+        currentWork: req.body.currentWork || "",
+        image: req.file.path || ""
     })
 
     member.save()
