@@ -10,7 +10,8 @@ exports.create = (req, res) => {
 
     const note = new Note({
         title: req.body.title || 'untitled note',
-        content: req.body.content
+        content: req.body.content,
+        image: req.file.path || ""
     })
 
     note.save()

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const noteSchema = mongoose.Schema({
     title: String,
-    content: String
+    content: String,
+    image: String
     // author: {type: Schema.Types.ObjectId, ref: 'Author'}
 }, {
     timestamps: true

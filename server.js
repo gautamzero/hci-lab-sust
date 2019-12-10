@@ -26,13 +26,13 @@ mongoose.connect(dbConfig.url, {
 
 app.get('/', (req, res) => {
     res.json({
-        "message": "surprise madaf*cker"
+        "message": "surprise lab"
     });
 });
 
 // Require Notes routes
 require('./app/routes/auth.routes.js')(app);
-require('./app/routes/note.routes.js')(app);
+require('./app/routes/note.routes.js')(app, multer);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app, multer);
 require('./app/routes/project.routes.js')(app, multer);
