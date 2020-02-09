@@ -1,5 +1,5 @@
 module.exports = (app, multer) => {
-    const projects = require('../controllers/project.contorller.js');
+    const projects = require('../controllers/project.controller.js');
     const  auth = require('../../middleware/auth.js');
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
@@ -10,6 +10,12 @@ module.exports = (app, multer) => {
         }
       })
     const upload = multer({ storage: storage })
+
+    app.use(function(req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*"); 
+      // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    });
 
     app.post('/projects', auth.checkToken, upload.single('projectImage'), projects.create);
 
