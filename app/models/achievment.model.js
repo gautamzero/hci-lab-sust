@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const achievmentSchema = mongoose.Schema({
     title:String,
     description: String,
-    duration: String,
-    coordinators: String,
     image: String
 }, {
     timestamps : true
@@ -12,4 +10,4 @@ const achievmentSchema = mongoose.Schema({
 
 );
 
-module.exports = mongoose.model('project', achievmentSchema);
+module.exports = mongoose.model('achievment', achievmentSchema);
