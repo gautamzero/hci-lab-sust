@@ -7,6 +7,8 @@ exports.create = (req, res) => {
         });
     }
 
+    console.log(req.body);
+
     const project = new Project ({
         title: req.body.title,
         coordinators: req.body.coordinators,
