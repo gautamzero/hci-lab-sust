@@ -45,6 +45,7 @@ require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app, multer);
 require('./app/routes/project.routes.js')(app, multer);
 require('./app/routes/achievment.routes.js')(app, multer);
+require('./app/routes/contact.routes.js')(app);
 
 
 
