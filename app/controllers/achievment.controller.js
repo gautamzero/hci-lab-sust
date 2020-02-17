@@ -3,15 +3,13 @@ const Achievment = require('../models/achievment.model');
 exports.create = (req, res) => {
     if(!req.body.title || !req.body.description || !req.body.coordinators) {
         return res.status(400).send({
-            message: "Project details cannot be empty"
+            message: "achievement details cannot be empty"
         });
     }
 
     const achievment = new Achievment ({
         title: req.body.title,
-        coordinators: req.body.coordinators,
         description: req.body.description,
-        duration: req.body.duration || "",
         image: req.file.path || ""
     })
 
@@ -37,47 +35,45 @@ exports.findAll = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    let projectObj;
-    Achievment.findById(req.params.projectId)
-        .then(project => {
-            if(!project) {
+    let achievmentObj;
+    Achievment.findById(req.params.achievmentId)
+        .then(achievment => {
+            if(!achievment) {
                 return res.status(404).send({
-                    message:"Project not found for id"+req.params.projectId
+                    message:"Achievement not found for id"+req.params.achievmentId
                 });
             }
-            projectObj = project;
+            achievmentObj = achievment;
 
-            Project.findByIdAndUpdate(req.params.projectId, {
-                title: req.body.title || projectObj.title,
-                description: req.body.description || projectObj.description,
-                coordinators: req.body.coordinators || projectObj.coordinators,
-                duration: req.body.duration || projectObj.duration
+            Achievment.findByIdAndUpdate(req.params.achievmentId, {
+                title: req.body.title || achievmentObj.title,
+                description: req.body.description || achievmentObj.description,
             }, {new: true})
-                .then(project => {
-                    if(!project) {
+                .then(achievment => {
+                    if(!achievment) {
                         return res.status(404).send({
-                            message: "project not found with id " + req.params.projectId
+                            message: "achievment not found with id " + req.params.achievmentId
                         });
                     }
-                    res.send(project)
+                    res.send(achievment)
                 }).catch(err => {
                 if(err.kind === 'ObjectId') {
                     return res.status(404).send({
-                        message: "project not found with id " + req.params.projectId
+                        message: "achievment not found with id " + req.params.achievmentId
                     });
                 }
                 return res.status(500).send({
-                    message: "Error updating project with id " + req.params.projectId
+                    message: "Error updating achievment with id " + req.params.achievmentId
                 });
             });
         }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "project not found with id " + req.params.projectId
+                message: "achievment not found with id " + req.params.achievmentId
             });
         }
         return res.status(500).send({
-            message: "Error updating project with id " + req.params.projectId
+            message: "Error updating achievment with id " + req.params.achievmentId
         });
     });
 };

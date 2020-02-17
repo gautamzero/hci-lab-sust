@@ -44,6 +44,8 @@ require('./app/routes/note.routes.js')(app, multer);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app, multer);
 require('./app/routes/project.routes.js')(app, multer);
+require('./app/routes/achievment.routes.js')(app, multer);
+
 
 
 app.listen(9001, () => {
