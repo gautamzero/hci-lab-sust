@@ -78,22 +78,22 @@ exports.update = (req, res) => {
     });
 };
 exports.delete = (req, res) => {
-    Project.findByIdAndRemove(req.params.projectId)
-        .then(project => {
-            if(!project) {
+    Achievment.findByIdAndRemove(req.params.achievmentId)
+        .then(achievment => {
+            if(!achievment) {
                 return res.status(404).send({
-                    message: "Project Not found with Id : "+req.params.projectId
+                    message: "achievment Not found with Id : "+req.params.achievmentId
                 });
             }
-            res.send({message: "Project deleted successfully"});
+            res.send({message: "achievment deleted successfully"});
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "project not found with id " + req.params.projectId
+                message: "achievment not found with id " + req.params.achievmentId
             });
         }
         return res.status(500).send({
-            message: "Could not delete project with id " + req.params.projectId
+            message: "Could not delete achievment with id " + req.params.achievmentId
         });
     });
 };
