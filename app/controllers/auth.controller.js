@@ -69,7 +69,7 @@ exports.getToken = (req, res) => {
                 }
             );
             res.send({
-                success: false,
+                success: true,
                 token: token
             });
         }
