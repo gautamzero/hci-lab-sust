@@ -1,9 +1,9 @@
 const Achievment = require('../models/achievment.model');
 
 exports.create = (req, res) => {
-    if(!req.body.title || !req.body.description || !req.body.coordinators) {
+    if(!req.body.title || !req.body.description) {
         return res.status(400).send({
-            message: "achievement details cannot be empty"
+            message: "Achievement details cannot be empty"
         });
     }
 

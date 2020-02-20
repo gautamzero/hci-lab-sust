@@ -11,17 +11,12 @@ module.exports = (app, multer) => {
       })
     const upload = multer({ storage: storage })
 
-    app.use(function(req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*"); 
-      // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-    });
 
     app.post('/achievments', auth.checkToken, upload.single('achievmentImage'), achievments.create);
 
     app.get('/achievments', achievments.findAll);
 
-    app.put('/achievments/:achivementId', auth.checkToken, achievments.update);
+    app.put('/achievments/:achievmentId', auth.checkToken, achievments.update);
 
-    app.delete('/achievments/:achivementId', auth.checkToken, achievments.delete);
+    app.delete('/achievments/:achievmentId', auth.checkToken, achievments.delete);
 };

@@ -11,6 +11,8 @@ module.exports = (app, multer) => {
       })
     const upload = multer({ storage: storage })
 
+
+
     app.post('/members', auth.checkToken, upload.single('memberImage'), members.create);
 
     app.get('/members', members.findAll);
