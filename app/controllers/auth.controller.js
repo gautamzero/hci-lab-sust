@@ -9,7 +9,7 @@ exports.login = (req, res) => {
             message: 'Authentication failed! Please check the request'
         });
     }
-    
+
     let userName = req.body.userName;
     let passWord = req.body.passWord;
 
@@ -29,7 +29,7 @@ exports.login = (req, res) => {
                 expiresIn: '7d'
             }
         );
-    
+
         res.send({
             success: true,
             message: 'Authentication successful!',
@@ -52,7 +52,7 @@ exports.getToken = (req, res) => {
             message: 'Refresh token not found'
         });
     }
-    
+
     let refreshToken = req.body.refreshToken;
 
     jwt.verify(refreshToken, config.refreshSecret, (err, decoded) => {
@@ -69,7 +69,7 @@ exports.getToken = (req, res) => {
                 }
             );
             res.send({
-                success: false,
+                success: true,
                 token: token
             });
         }
