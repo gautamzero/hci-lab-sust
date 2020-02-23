@@ -13,10 +13,10 @@ module.exports = (app,multer) => {
     const upload = multer({storage: storage});
 
     // Create a new Note
-    app.post('/notes', auth.checkToken, upload.single('noteImage'), notes.create);
+    app.post('/notes', auth.checkToken, upload.single('noteFile'), notes.create);
 
     // Retrieve all Notes
-    app.get('/notes', auth.checkToken, notes.findAll);
+    app.get('/notes', notes.findAll);
 
     // Retrieve a single Note with noteId
     app.get('/notes/:noteId', notes.findOne);

@@ -40,10 +40,10 @@ app.use(function (req, res, next) {
 
 // Require Notes routes
 require('./app/routes/auth.routes.js')(app);
-require('./app/routes/note.routes.js')(app, multer);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app, multer);
 require('./app/routes/project.routes.js')(app, multer);
+require('./app/routes/note.routes.js')(app, multer);
 require('./app/routes/achievment.routes.js')(app, multer);
 require('./app/routes/contact.routes.js')(app);
 

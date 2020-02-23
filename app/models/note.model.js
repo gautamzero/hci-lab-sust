@@ -6,7 +6,7 @@ const noteSchema = mongoose.Schema({
     organiser: String,
     deadline: String,
     description: String,
-    noticeFile: String
+    noteFile: String
     // author: {type: Schema.Types.ObjectId, ref: 'Author'}
 }, {
     timestamps: true
