@@ -1,11 +1,13 @@
 const Project = require('../models/project.model');
 
 exports.create = (req, res) => {
-    if(!req.body.title || !req.body.description || !req.body.coordinators) {
+    if(!req.body.title || !req.body.description) {
         return res.status(400).send({
             message: "Project details cannot be empty"
         });
     }
+
+    console.log(req.body);
 
     const project = new Project ({
         title: req.body.title,

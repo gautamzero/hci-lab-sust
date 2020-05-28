@@ -1,5 +1,5 @@
 module.exports = (app, multer) => {
-    const members = require('../controllers/member.controller.js');
+    const achievments = require('../controllers/achievment.controller.js');
     const auth = require('../../middleware/auth.js');
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
@@ -12,14 +12,11 @@ module.exports = (app, multer) => {
     const upload = multer({ storage: storage })
 
 
+    app.post('/achievments', auth.checkToken, upload.single('achievmentImage'), achievments.create);
 
-    app.post('/members', auth.checkToken, upload.single('memberImage'), members.create);
+    app.get('/achievments', achievments.findAll);
 
-    app.get('/members', members.findAll);
+    app.put('/achievments/:achievmentId', auth.checkToken, achievments.update);
 
-    app.get('/members/:memberId', members.findOne);
-
-    app.put('/members/:memberId', auth.checkToken, members.update);
-
-    app.delete('/members/:memberId', auth.checkToken, members.delete);
+    app.delete('/achievments/:achievmentId', auth.checkToken, achievments.delete);
 };

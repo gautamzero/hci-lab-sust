@@ -26,16 +26,27 @@ mongoose.connect(dbConfig.url, {
 
 app.get('/', (req, res) => {
     res.json({
-        "message": "surprise madaf*cker"
+        "message": "surprise lab"
     });
 });
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    next();
+  });
+
 // Require Notes routes
 require('./app/routes/auth.routes.js')(app);
-require('./app/routes/note.routes.js')(app);
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/member.routes.js')(app, multer);
 require('./app/routes/project.routes.js')(app, multer);
+require('./app/routes/note.routes.js')(app, multer);
+require('./app/routes/achievment.routes.js')(app, multer);
+require('./app/routes/contact.routes.js')(app);
+
 
 
 app.listen(9001, () => {
