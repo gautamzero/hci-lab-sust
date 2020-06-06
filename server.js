@@ -1,6 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer  = require('multer');
+const port = process.env.PORT || 9001;
 
 const app = express();
 
@@ -15,7 +18,7 @@ const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.url, {
+mongoose.connect(process.env.MONGODB_URI || dbConfig.url, {
     useNewUrlParser: true
 }).then(()=> {
     console.log("successfully connected to the database");
@@ -49,6 +52,6 @@ require('./app/routes/contact.routes.js')(app);
 
 
 
-app.listen(9001, () => {
+app.listen(port, () => {
     console.log("server is listening on port 9001");
 })
