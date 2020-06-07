@@ -17,6 +17,13 @@ exports.login = (req, res) => {
         userName: userName,
         passWord: passWord
     }).then(user => {
+        if(!user) {
+            return res.status(403).send({
+                success: false,
+                message: 'Incorrect username or password'
+            });
+        }
+
         let token = jwt.sign({userName: userName},
             config.secret,
             {

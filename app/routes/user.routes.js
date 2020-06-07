@@ -1,8 +1,9 @@
 module.exports = (app) => {
     const users = require('../controllers/user.controller.js');
+    const auth = require('../../middleware/auth');
 
     // Create a new Note
-    app.post('/users', users.create);
+    app.post('/users', auth.checkToken, users.create);
 
     // Retrieve all Notes
     app.get('/users', users.findAll);
