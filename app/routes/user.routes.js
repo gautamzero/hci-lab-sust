@@ -6,7 +6,7 @@ module.exports = (app) => {
     app.post('/users', auth.checkToken, users.create);
 
     // Retrieve all Notes
-    app.get('/users', users.findAll);
+    app.get('/users', auth.checkToken, users.findAll);
 
     // Retrieve a single Note with noteId
     // app.get('/notes/:noteId', notes.findOne);
